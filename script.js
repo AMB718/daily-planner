@@ -38,20 +38,20 @@ $(".time-block").each(function (Date) {
   if (displayedHour === date.getHours()) {
     //  current hour -> styled grey
     //  select only
-    $(this).find("textarea").addClass("bg-secondary text-white");
+    $(this).find("textarea").addClass("bg-light text-black");
   } else if (displayedHour < date.getHours()) {
     //  past hour -> styled red
-    $(this).find("textarea").addClass("bg-warning text-white");
+    $(this).find("textarea").addClass("bg-warning text-black");
   } else {
     //  future -> styled green
-    $(this).find("textarea").addClass("bg-success text-white");
+    $(this).find("textarea").addClass("bg-success text-black");
   }
   // looking for data in local storage for each text area
   if (data[id]) {
     //input that text
-    console.log(data[id]);
+    $(this).find("textarea").val(data[id]);
+    // saving data on refresh
   }
-  // select class for if the time block is current, in the past, or future
 });
 
 $(".saveBtn").on("click", function (event) {
@@ -62,6 +62,7 @@ $(".saveBtn").on("click", function (event) {
   const id = $(this).parent().attr("id");
   // add it to our data object
   data[id] = val;
-  //  save to localstorage
+  //  save to local storage
   localStorage.setItem("day-schedule", JSON.stringify(data));
+  // getting items from localStorage
 });
