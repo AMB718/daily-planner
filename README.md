@@ -1,7 +1,7 @@
 # daily-planner
 
 ## Description
-In this week I was tasked in creating a daily planner using html, css, JS, JQuery, APIs, and local storage.
+In this week I was tasked in creating a daily planner using HTML, CSS, JavaScript, JQuery, APIs, and local storage.
 
 ## Images
 ![image](https://user-images.githubusercontent.com/87721575/132071031-33542534-02fb-4cfe-990f-966f26495700.png)
