@@ -10,7 +10,6 @@ setInterval(function () {
   const year = date.getFullYear();
   // hour
   const hour = date.getHours();
-
   // minute
   const minutes = date.getMinutes();
   // seconds
@@ -20,47 +19,53 @@ setInterval(function () {
   $("#time").text(formattedTime);
 }, 1000);
 
-
-let appointments = document.querySelector("textarea")
+let appointments = document.querySelector("textarea");
 let data = JSON.parse(localStorage.getItem("day-schedule")) || {};
-let hours = 24;
 
 // when page loads
 // grab all time-block elements
 
-$(".time-block").each(function () {
-    console.log(this);
-    const id = $(this).attr("id");
-    // looking for da{ta in local storage for each text area
-    if(data[id]){
-        //input that text
-        console.log(data[id]);
-    }
-    // select class for if the time block is current, in the past, or future
+const date = new Date();
+
+$(".time-block").each(function (Date) {
+  const id = $(this).attr("id");
+  const hour = id.split("-").pop();
+  date.getHours();
+
+  // console.log(this);
+  // console.log(hour);
+
+  if (hour === date.getHours()) {
+    //  current hour -> styled grey
+    //  select only
+    $("#hour-" + date.getHours())
+      .find("textarea")
+      .addClass("bg-secondary text-white");
+  } else if (hour > date.getHours()) {
+    //  past hour -> styled red
+    $("#hour-" + date.getHours())
+      .find("textarea")
+      .addClass("bg-warning text-white");
+  } else {
+    //  future -> styled green
+    $("textarea").addClass("bg-success text-white");
+  }
+  // looking for data in local storage for each text area
+  if (data[id]) {
+    //input that text
+    console.log(data[id]);
+  }
+  // select class for if the time block is current, in the past, or future
 });
 
 $(".saveBtn").on("click", function (event) {
-
-    event.preventDefault();
-    // grab value from the text area
-    const val = $(this).siblings("textarea").eq(0).val().trim();
-    // grab id from the parent
-    const id = $(this).parent().attr("id");
-    // add it to our data object
-    data[id] = val;
-    //  save to localstorage
-    localStorage.setItem("day-schedule", JSON.stringify(data));
+  event.preventDefault();
+  // grab value from the text area
+  const val = $(this).siblings("textarea").eq(0).val().trim();
+  // grab id from the parent
+  const id = $(this).parent().attr("id");
+  // add it to our data object
+  data[id] = val;
+  //  save to localstorage
+  localStorage.setItem("day-schedule", JSON.stringify(data));
 });
-
-
-for (let hour = 9; hour <= 17; hour++) {
-    
-
-
-    function timeColors() {
-    if(hour < formattedTime){
-        ".time-block".css("background-color", "pink")
-}else{
-    hour > formattedTime
-}".time-block".css("background-color", "green")
-}};
