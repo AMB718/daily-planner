@@ -29,26 +29,22 @@ const date = new Date();
 
 $(".time-block").each(function (Date) {
   const id = $(this).attr("id");
-  const hour = id.split("-").pop();
+  const displayedHour = parseInt(id.split("-").pop());
   date.getHours();
 
   // console.log(this);
   // console.log(hour);
 
-  if (hour === date.getHours()) {
+  if (displayedHour === date.getHours()) {
     //  current hour -> styled grey
     //  select only
-    $("#hour-" + date.getHours())
-      .find("textarea")
-      .addClass("bg-secondary text-white");
-  } else if (hour > date.getHours()) {
+    $(this).find("textarea").addClass("bg-secondary text-white");
+  } else if (displayedHour < date.getHours()) {
     //  past hour -> styled red
-    $("#hour-" + date.getHours())
-      .find("textarea")
-      .addClass("bg-warning text-white");
+    $(this).find("textarea").addClass("bg-warning text-white");
   } else {
     //  future -> styled green
-    $("textarea").addClass("bg-success text-white");
+    $(this).find("textarea").addClass("bg-success text-white");
   }
   // looking for data in local storage for each text area
   if (data[id]) {
