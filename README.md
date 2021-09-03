@@ -9,5 +9,6 @@
 - CSS
 - JavaScript
 - JQuery
+- APIs
 
 ## Questions/Contact
