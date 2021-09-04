@@ -15,4 +15,4 @@ In this week I was tasked in creating a daily planner using HTML, CSS, JavaScrip
 - local storage
 
 ## Questions/Contact
-Please contact me with any questions at annalisa.bauer1@gmail.com. My daily planner can be found hosted at... https://amb718.github.io/daily-planner/
+Please contact me with any questions at annalisa.bauer1@gmail.com. My daily planner can be found hosted at... https://annalisambauer.github.io/daily-planner/
